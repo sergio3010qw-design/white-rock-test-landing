@@ -15,9 +15,9 @@ h1,h2,h3,.logo{font-family:'Tenor Sans',sans-serif;font-weight:400}
 
 /* HEADER */
 header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%,820px);display:flex;justify-content:space-between;align-items:center;padding:13px 26px;border-radius:999px;backdrop-filter:blur(20px) saturate(160%) brightness(130%);-webkit-backdrop-filter:blur(20px) saturate(160%) brightness(130%);background:linear-gradient(135deg,rgb(255 255 255 / 20%),rgb(255 255 255 / 7%));z-index:50}
-.nav-left{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#ffffff;transition:.3s}
-.nav-left:hover{color:var(--acc)}
-.logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#ffffff}
+.nav-left{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#26282b;transition:.3s}
+.nav-left:hover{color:var(--green)}
+.logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#26282b}
 .logo svg{width:24px;height:24px}
 
 /* КНОПКИ */
@@ -47,27 +47,27 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 .card-a img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block}
 .card-a .panel{background:#141414;color:#f0efec;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:16px;line-height:1.6}
 
-/* карточки — скругления + не растягиваются до высоты строки */
+/* карточки */
 .card{background:#141414;border-radius:24px;overflow:hidden;align-self:start}
 .card img{width:100%;object-fit:cover;display:block}
 .card .cap{padding:24px 22px 28px}
 .card .cap p{color:#f0efec;font-size:16px;line-height:1.55}
 
-/* правая — меньше и выше (наезжает на большой блок) */
+/* правая — длиннее, наезжает на большой блок */
 .card-b{grid-column:9/13;grid-row:2;margin-top:-120px;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.card-b img{height:300px}
+.card-b img{height:440px}
 /* левая */
 .card-c{grid-column:1/5;grid-row:2;margin-top:70px}
 .card-c img{height:380px}
-/* центральная — меньше и строго по центру */
+/* центральная — меньше и по центру */
 .card-d{grid-column:5/9;grid-row:2;margin-top:90px;width:86%;justify-self:center}
 .card-d img{height:240px}
-/* кнопка — на уровне левого блока */
-.btn-collage{grid-column:9/13;grid-row:3;justify-self:end;margin-top:-30px}
+/* кнопка — справа, низ на уровне низа левого блока */
+.btn-collage{grid-column:9/13;grid-row:2;justify-self:end;align-self:end}
 
 @media(max-width:900px){
   .card-a,.card-b,.card-c,.card-d{grid-column:1/13;grid-row:auto;margin-top:0;width:100%}
-  .btn-collage{grid-column:1/13;grid-row:auto;justify-self:center;margin-top:40px}
+  .btn-collage{grid-column:1/13;grid-row:auto;justify-self:center;align-self:auto;margin-top:40px}
   .card-a{grid-template-columns:1fr}
   .card-a img{min-height:260px}
 }
