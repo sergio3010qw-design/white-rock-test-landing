@@ -3,58 +3,166 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Походы выходного дня</title>
+<title>WILD ROUTE — авторские походы в горы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
-body{background:#0e1116;color:#eef2f6}
-section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center}
-h1{font-size:clamp(32px,6vw,56px);line-height:1.1}
-.accent{color:#c8f04a}
-.sub{max-width:560px;color:#9aa4b2;margin:16px 0 32px;font-size:17px}
-.btn{display:inline-block;background:#c8f04a;color:#0e1116;font-weight:700;padding:14px 28px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;font-size:16px}
-.btn:hover{opacity:.9}
-form{display:flex;flex-direction:column;gap:12px;width:min(360px,100%)}
-input{padding:14px;border-radius:12px;border:1px solid #2a3140;background:#161b24;color:#eef2f6;font-size:16px}
-input::placeholder{color:#555}
-.hint{color:#9aa4b2;font-size:14px;margin-top:16px}
+:root{--bg:#0a0e13;--gold:#e0ac45;--text:#f2f5f7;--muted:#9aa7b4}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Manrope,sans-serif}
+h1,h2,.logo{font-family:Unbounded,sans-serif}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 5%;backdrop-filter:blur(14px);background:rgba(10,14,19,.55);border-bottom:1px solid rgba(255,255,255,.06)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:2px}
+.logo svg{width:30px;height:30px}
+nav{display:flex;gap:28px}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:.3s}
+nav a:hover{color:var(--gold)}
+@media(max-width:640px){nav{display:none}}
+
+.btn{display:inline-block;background:linear-gradient(135deg,#e6b64c,#c98f2a);color:#141005;font-weight:700;padding:14px 30px;border-radius:999px;border:0;cursor:pointer;font-size:15px;text-decoration:none;transition:.3s;box-shadow:0 8px 24px rgba(224,172,69,.25)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(224,172,69,.4)}
+.btn.small{padding:10px 22px;font-size:13px}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 60px;overflow:hidden}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(6,9,13,.5),rgba(10,14,19,.92));z-index:-1}
+.hero h1{font-size:clamp(34px,6.5vw,72px);line-height:1.08;font-weight:800;letter-spacing:1px}
+.hero h1 span{color:var(--gold)}
+.hero p{max-width:600px;color:var(--muted);font-size:clamp(15px,2vw,18px);margin:22px 0 36px}
+.stats{display:flex;gap:48px;margin-top:64px;flex-wrap:wrap;justify-content:center}
+.stat b{font-family:Unbounded;font-size:clamp(22px,3vw,34px);color:var(--gold);display:block}
+.stat span{color:var(--muted);font-size:13px}
+
+/* FEATURES */
+.features{padding:110px 5%;text-align:center}
+.features h2{font-size:clamp(26px,4vw,44px);margin-bottom:14px}
+.features .sub{color:var(--muted);margin-bottom:60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);border-radius:20px;padding:34px 26px;text-align:left;transition:.35s}
+.card:hover{transform:translateY(-6px);border-color:rgba(224,172,69,.4)}
+.card svg{width:38px;height:38px;stroke:var(--gold);margin-bottom:18px}
+.card h3{font-size:17px;margin-bottom:10px;font-family:Unbounded;font-weight:600}
+.card p{color:var(--muted);font-size:14px;line-height:1.6}
+
+/* CTA + FOOTER */
+.cta{padding:90px 5%;text-align:center}
+.cta h2{font-size:clamp(24px,4vw,40px);margin-bottom:30px}
+footer{padding:30px 5%;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid rgba(255,255,255,.06)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(4,7,10,.75);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:100}
+.modal.open{display:flex}
+.modal-box{width:min(420px,92%);background:#101720;border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:34px 28px;position:relative;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box h3{font-family:Unbounded;font-size:20px;margin-bottom:8px}
+.modal-box p{color:var(--muted);font-size:14px;margin-bottom:22px}
+.modal-box form{display:flex;flex-direction:column;gap:12px}
+.modal-box input{padding:14px;border-radius:12px;border:1px solid #2a3140;background:#161b24;color:var(--text);font-size:15px}
+.modal-box input:focus{outline:1px solid var(--gold)}
+.close{position:absolute;top:14px;right:18px;background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:none}
 </style>
 </head>
 <body>
 
+<header>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 20L10 5l4 8 3-4 4 11H3z" fill="#e0ac45"/></svg>
+    WILD&nbsp;ROUTE
+  </div>
+  <nav>
+    <a href="#features">Преимущества</a>
+    <a href="#cta">Контакт</a>
+  </nav>
+  <button class="btn small" onclick="openModal()">Оставить заявку</button>
+</header>
+
 <!-- ЭКРАН 1 -->
-<section>
-  <h1>Походы в горы<br><span class="accent">на выходные</span></h1>
-  <p class="sub">Маршруты для новичков и опытных. Подберём тур под твой уровень и свободные даты.</p>
-  <a class="btn" href="#lead">Оставить заявку</a>
+<section class="hero">
+  <!-- Если видео не грузится — возьми ссылку .mp4 на pexels.com (любой ролик про горы) и подставь в src -->
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80">
+    <source src="https://videos.pexels.com/video-files/1573986/1573986-hd_1920_1080_30fps.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+  <h1>Походы, которые<br><span>меняют тебя</span></h1>
+  <p>Авторские маршруты по самым красивым горам. Маленькие группы, продуманная логистика и гиды, которые знают каждую тропу.</p>
+  <button class="btn" onclick="openModal()">Оставить заявку</button>
+  <div class="stats">
+    <div class="stat"><b>9 лет</b><span>водим группы</span></div>
+    <div class="stat"><b>47</b><span>маршрутов</span></div>
+    <div class="stat"><b>1200+</b><span>счастливых туристов</span></div>
+  </div>
 </section>
 
-<!-- ЭКРАН 2 -->
-<section id="lead">
-  <h1 style="font-size:clamp(24px,4vw,36px)">Оставить заявку</h1>
-  <p class="sub">Перезвоним в течение часа</p>
-
-  <form action="https://formsubmit.co/superhumansmm@yandex.ru" method="POST">
-
-    <!-- Имя и телефон -->
-    <input type="text" name="Имя" placeholder="Имя" required>
-    <input type="tel" name="Телефон" placeholder="+7 ___ ___-__-__" required>
-
-    <!-- Скрытые поля для формата письма -->
-    <input type="hidden" name="_subject" value="Новая заявка с сайта">
-    <input type="hidden" name="Сайт" value="https://sergio3010qw-design.github.io/test-landing">
-    <input type="hidden" name="Автор" value="Багаев С.С.">
-
-    <!-- После отправки — редирект в бота -->
-    <input type="hidden" name="_next" value="https://t.me/white-rock?start=lead">
-
-    <!-- Отключаем капчу Formsubmit -->
-    <input type="hidden" name="_captcha" value="false">
-
-    <button class="btn">Отправить</button>
-  </form>
-
-  <p class="hint">После отправки откроется Telegram-бот</p>
+<!-- ЭКРАН 2: ПРЕИМУЩЕСТВА -->
+<section class="features" id="features">
+  <h2 class="reveal">Почему с нами</h2>
+  <p class="sub reveal">Мы продумали всё, чтобы ты просто наслаждался горами</p>
+  <div class="grid">
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <h3>Группы до 8 человек</h3>
+      <p>Никаких толп. Гид знает каждого по имени, маршрут подстраивается под группу.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+      <h3>Гиды с опытом 10+ лет</h3>
+      <p>Сертифицированные инструкторы, которые ходили эти маршруты десятки раз.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 8V6a6 6 0 0 1 12 0v2"/><rect x="4" y="8" width="16" height="13" rx="3"/></svg>
+      <h3>Снаряжение под ключ</h3>
+      <p>Палатки, питание, аптечки и прокат снаряжения — берём всё на себя.</p>
+    </div>
+    <div class="card reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h3>Безопасность 100%</h3>
+      <p>Страховка, спутниковая связь и продуманные запасные выходы с маршрута.</p>
+    </div>
+  </div>
 </section>
 
+<!-- CTA -->
+<section class="cta" id="cta">
+  <h2 class="reveal">Готов к приключению?</h2>
+  <button class="btn reveal" onclick="openModal()">Оставить заявку</button>
+</section>
+
+<footer>© 2026 WILD ROUTE · Авторские походы в горы</footer>
+
+<!-- ПОПАП С ФОРМОЙ -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h3>Оставить заявку</h3>
+    <p>Перезвоним в течение часа и подберём маршрут</p>
+    <form action="https://formsubmit.co/superhumansmm@yandex.ru" method="POST">
+      <input type="text" name="Имя" placeholder="Имя" required>
+      <input type="tel" name="Телефон" placeholder="+7 ___ ___-__-__" required>
+      <input type="hidden" name="_subject" value="Новая заявка с сайта">
+      <input type="hidden" name="Сайт" value="https://sergio3010qw-design.github.io/white-rock-test-landing">
+      <input type="hidden" name="Автор" value="Багаев С.С.">
+      <input type="hidden" name="_next" value="https://t.me/white-rock?start=lead">
+      <input type="hidden" name="_captcha" value="false">
+      <button class="btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
