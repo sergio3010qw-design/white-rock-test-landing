@@ -30,7 +30,7 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,17,22,.18),rgba(14,17,22,.4),rgba(14,17,22,.85));z-index:-1}
 .hero h1{font-size:clamp(96px,7.5vw,96px);line-height:1.05;letter-spacing:-2px;margin-bottom:12px;text-shadow:0 2px 30px rgba(0,0,0,.45)}
 .hero h1 span{color:var(--acc)}
-.hero p{max-width:640px;color:#26282b;font-size:clamp(16px,1.9vw,16px);line-height:1.5;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.hero p{max-width:640px;color:#ffffff;font-size:clamp(16px,1.9vw,16px);line-height:1.5;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 @media(max-width:640px){
   .hero h1{font-size:44px;letter-spacing:-1px}
 }
@@ -47,17 +47,14 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 .card .cap{padding:22px 22px 26px;color:#f0efec}
 .card .cap h3{font-size:18px;margin-bottom:8px}
 .card .cap p{font-size:16px;line-height:1.6;color:#b9b7b3}
-.card-b{grid-column:9/13;grid-row:2;margin-top:-100px;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.card-b img{height:420px}
 .card-c{grid-column:1/5;grid-row:2;margin-top:70px}
 .card-c img{height:400px}
 .card-d{grid-column:5/9;grid-row:2;margin-top:150px}
 .card-d img{height:360px}
-.more{grid-column:9/13;grid-row:3;justify-self:end;margin-top:60px;background:#141414;color:#f0efec;font-family:'IBM Plex Serif',serif;font-size:16px;letter-spacing:1px;padding:16px 32px;border:0;cursor:pointer;transition:.3s}
-.more:hover{background:var(--dark)}
+.btn-collage{grid-column:9/13;grid-row:2;justify-self:end;align-self:end;margin-bottom:60px}
 @media(max-width:900px){
-  .card-a,.card-b,.card-c,.card-d{grid-column:1/13;grid-row:auto;margin-top:0}
-  .more{grid-column:1/13;grid-row:auto}
+  .card-a,.card-c,.card-d{grid-column:1/13;grid-row:auto;margin-top:0}
+  .btn-collage{grid-column:1/13;grid-row:auto;justify-self:center;margin-bottom:0;margin-top:40px}
   .card-a{grid-template-columns:1fr}
   .card-a img{min-height:260px}
 }
@@ -105,20 +102,12 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
   <div class="collage">
 
     <div class="card-a reveal">
-      <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1600&q=80" alt="Горы">
+      <img src="https://picsum.photos/1600/800?random=1" alt="Горы">
       <div class="panel">Мы продумали логистику, снаряжение и маршруты так, чтобы ты просто наслаждался горами</div>
     </div>
 
-    <div class="card card-b reveal">
-      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Группа в походе">
-      <div class="cap">
-        <h3>Группы до 8 человек</h3>
-        <p>Никаких толп. Гид знает каждого по имени, маршрут подстраивается под группу.</p>
-      </div>
-    </div>
-
     <div class="card card-c reveal">
-      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Лагерь">
+      <img src="https://picsum.photos/800/800?random=2" alt="Лагерь">
       <div class="cap">
         <h3>Снаряжение под ключ</h3>
         <p>Палатки, питание, аптечки и прокат снаряжения — берём всё на себя.</p>
@@ -126,14 +115,14 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
     </div>
 
     <div class="card card-d reveal">
-      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Тропа">
+      <img src="https://picsum.photos/800/800?random=3" alt="Тропа">
       <div class="cap">
         <h3>Гиды с опытом 10+ лет</h3>
         <p>Сертифицированные инструкторы, которые ходили эти маршруты десятки раз.</p>
       </div>
     </div>
 
-    <button class="more reveal" onclick="openModal()">Оставить заявку</button>
+    <button class="btn btn-collage reveal" onclick="openModal()">Оставить заявку</button>
 
   </div>
 </section>
