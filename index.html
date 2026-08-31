@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0e1116;--acc:#c8f04a;--green:#9bc400;--text:#eef2f6;--dark:#111214}
+:root{--bg:#0e1116;--acc:#c8f04a;--green:#9bc400;--text:#eef2f6;--dark:#26282b}
 *{margin:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'IBM Plex Serif',serif}
@@ -30,35 +30,34 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,17,22,.18),rgba(14,17,22,.4),rgba(14,17,22,.85));z-index:-1}
 .hero h1{font-size:clamp(96px,7.5vw,96px);line-height:1.05;letter-spacing:-2px;margin-bottom:12px;text-shadow:0 2px 30px rgba(0,0,0,.45)}
 .hero h1 span{color:var(--acc)}
-.hero p{max-width:640px;color:#e6ebf0;font-size:clamp(20px,1.9vw,20px);line-height:1.5;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.hero p{max-width:640px;color:#26282b;font-size:clamp(16px,1.9vw,16px);line-height:1.5;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 @media(max-width:640px){
   .hero h1{font-size:44px;letter-spacing:-1px}
-  .hero p{font-size:17px}
 }
 
 /* FEATURES — коллаж */
 .features{background:#e9e8e6;color:var(--dark);padding:110px 5%}
-.features h2{font-size:clamp(26px,3.5vw,40px);letter-spacing:-1px;text-align:center;color:var(--dark);margin-bottom:80px}
+.features h2{font-size:clamp(32px,3.5vw,32px);letter-spacing:0;text-align:center;color:var(--dark);margin-bottom:80px}
 .collage{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1200px;margin:0 auto}
-.card-a{grid-column:1/13;display:grid;grid-template-columns:1.25fr 1fr}
+.card-a{grid-column:1/13;grid-row:1;display:grid;grid-template-columns:1.25fr 1fr}
 .card-a img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block}
-.card-a .panel{background:#141414;color:#f0efec;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:17px;line-height:1.6}
+.card-a .panel{background:#141414;color:#f0efec;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:16px;line-height:1.6}
 .card{background:#141414}
 .card img{width:100%;object-fit:cover;display:block}
 .card .cap{padding:22px 22px 26px;color:#f0efec}
 .card .cap h3{font-size:18px;margin-bottom:8px}
-.card .cap p{font-size:14px;line-height:1.6;color:#b9b7b3}
-.card-b{grid-column:9/13;margin-top:-100px;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.card .cap p{font-size:16px;line-height:1.6;color:#b9b7b3}
+.card-b{grid-column:9/13;grid-row:2;margin-top:-100px;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .card-b img{height:420px}
-.card-c{grid-column:1/5;margin-top:70px}
+.card-c{grid-column:1/5;grid-row:2;margin-top:70px}
 .card-c img{height:400px}
-.card-d{grid-column:5/9;margin-top:150px}
+.card-d{grid-column:5/9;grid-row:2;margin-top:150px}
 .card-d img{height:360px}
-.card-e{grid-column:9/13;margin-top:40px;background:#141414;color:#f0efec;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:44px 30px}
-.card-e h3{font-size:20px;margin-bottom:12px}
-.card-e p{font-size:14px;line-height:1.6;color:#b9b7b3}
+.more{grid-column:9/13;grid-row:3;justify-self:end;margin-top:60px;background:#141414;color:#f0efec;font-family:'IBM Plex Serif',serif;font-size:16px;letter-spacing:1px;padding:16px 32px;border:0;cursor:pointer;transition:.3s}
+.more:hover{background:var(--dark)}
 @media(max-width:900px){
-  .card-a,.card-b,.card-c,.card-d,.card-e{grid-column:1/13;margin-top:0}
+  .card-a,.card-b,.card-c,.card-d{grid-column:1/13;grid-row:auto;margin-top:0}
+  .more{grid-column:1/13;grid-row:auto}
   .card-a{grid-template-columns:1fr}
   .card-a img{min-height:260px}
 }
@@ -69,9 +68,9 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 .modal-box{width:min(420px,92%);background:linear-gradient(135deg,rgba(32,38,48,.72),rgba(18,22,30,.55));backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:34px 28px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);animation:pop .3s ease}
 @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
 .modal-box h3{font-size:20px;margin-bottom:8px}
-.modal-box p{color:#aeb6c0;font-size:14px;margin-bottom:24px}
+.modal-box p{color:#aeb6c0;font-size:16px;margin-bottom:24px}
 .modal-box form{display:flex;flex-direction:column;gap:12px}
-.modal-box input{padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(10,13,18,.4);color:var(--text);font-size:15px;font-family:'IBM Plex Serif',serif}
+.modal-box input{padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(10,13,18,.4);color:var(--text);font-size:16px;font-family:'IBM Plex Serif',serif}
 .modal-box input:focus{outline:1px solid var(--acc)}
 .close{position:absolute;top:14px;right:18px;background:none;border:0;color:#aeb6c0;font-size:24px;cursor:pointer}
 
@@ -104,35 +103,38 @@ header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%
 <section class="features" id="features">
   <h2 class="reveal">Почему с нами</h2>
   <div class="collage">
+
     <div class="card-a reveal">
-      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=80" alt="Горы">
+      <img src="https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=1600&q=80" alt="Горы">
       <div class="panel">Мы продумали логистику, снаряжение и маршруты так, чтобы ты просто наслаждался горами</div>
     </div>
+
     <div class="card card-b reveal">
-      <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80" alt="Группа в походе">
+      <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Группа в походе">
       <div class="cap">
         <h3>Группы до 8 человек</h3>
         <p>Никаких толп. Гид знает каждого по имени, маршрут подстраивается под группу.</p>
       </div>
     </div>
+
     <div class="card card-c reveal">
-      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="Лагерь">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Лагерь">
       <div class="cap">
         <h3>Снаряжение под ключ</h3>
         <p>Палатки, питание, аптечки и прокат снаряжения — берём всё на себя.</p>
       </div>
     </div>
+
     <div class="card card-d reveal">
-      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="Снаряжение">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80" alt="Тропа">
       <div class="cap">
         <h3>Гиды с опытом 10+ лет</h3>
         <p>Сертифицированные инструкторы, которые ходили эти маршруты десятки раз.</p>
       </div>
     </div>
-    <div class="card-e reveal">
-      <h3>Безопасность 100%</h3>
-      <p>Страховка, спутниковая связь и продуманные запасные выходы с маршрута.</p>
-    </div>
+
+    <button class="more reveal" onclick="openModal()">Оставить заявку</button>
+
   </div>
 </section>
 
