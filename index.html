@@ -7,43 +7,57 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0e1116;--acc:#c8f04a;--text:#eef2f6;--muted:#9aa4b2;--dark:#0e1116}
+:root{--bg:#0e1116;--acc:#c8f04a;--text:#eef2f6;--dark:#111214}
 *{margin:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'IBM Plex Serif',serif}
 h1,h2,h3,.logo{font-family:'Tenor Sans',sans-serif;font-weight:400}
 
-/* HEADER — стеклянный pill в стиле iOS */
-header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%,760px);display:flex;justify-content:space-between;align-items:center;padding:12px 22px;border-radius:999px;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(22,27,36,.55);border:1px solid rgba(255,255,255,.12);box-shadow:0 8px 32px rgba(0,0,0,.35);z-index:50}
-.logo{display:flex;align-items:center;gap:9px;font-size:15px;letter-spacing:2px}
-.logo svg{width:26px;height:26px}
-nav{display:flex;gap:22px}
-nav a{color:var(--muted);text-decoration:none;font-size:13px;transition:.3s}
-nav a:hover{color:var(--acc)}
-@media(max-width:560px){nav{display:none}}
-
-.btn{display:inline-block;background:var(--acc);color:var(--dark);font-family:'IBM Plex Serif',serif;font-weight:600;padding:14px 30px;border-radius:999px;border:0;cursor:pointer;font-size:15px;text-decoration:none;transition:.3s}
+/* HEADER — светлое стекло, чёрный текст, лого по центру */
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%,820px);display:flex;justify-content:space-between;align-items:center;padding:12px 24px;border-radius:999px;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);background:rgba(250,250,250,.38);border:1px solid rgba(255,255,255,.5);box-shadow:0 8px 32px rgba(0,0,0,.18);z-index:50}
+header a,header button{color:#1a1b1e}
+.nav-left{font-size:14px;text-decoration:none;transition:.3s}
+.nav-left:hover{opacity:.6}
+.logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;font-size:12px;letter-spacing:-1px;text-decoration:none;color:#1a1b1e}
+.logo svg{width:20px;height:20px}
+.btn{display:inline-block;background:var(--acc);color:var(--dark);font-family:'IBM Plex Serif',serif;font-weight:400;font-size:20px;letter-spacing:2px;padding:16px 38px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:.3s}
 .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,240,74,.35)}
-.btn.small{padding:9px 20px;font-size:13px}
+.btn.small{font-size:13px;letter-spacing:1px;padding:9px 20px;background:rgba(200,240,74,.9)}
 
-/* HERO — светлее */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 60px;overflow:hidden}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 24px 80px;overflow:hidden}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,17,22,.18),rgba(14,17,22,.4),rgba(14,17,22,.85));z-index:-1}
-.hero h1{font-size:clamp(28px,4.8vw,52px);line-height:1.15;letter-spacing:1px;text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.hero h1{font-size:clamp(48px,10.5vw,160px);line-height:1.02;letter-spacing:-1px;text-shadow:0 2px 30px rgba(0,0,0,.45)}
 .hero h1 span{color:var(--acc)}
-.hero p{max-width:600px;color:#dfe6ec;font-size:clamp(15px,1.8vw,17px);margin-bottom:24px;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+.hero p{max-width:720px;color:#e6ebf0;font-size:clamp(18px,2.2vw,28px);line-height:1.45;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 
-/* FEATURES — лаймовая секция */
-.features{background:var(--acc);color:var(--dark);padding:110px 5%;text-align:center}
-.features h2{font-size:clamp(22px,3.4vw,36px);margin-bottom:14px;color:var(--dark)}
-.features .sub{color:rgba(14,17,22,.65);margin-bottom:60px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1100px;margin:0 auto}
-.card{background:rgba(255,255,255,.55);border:1px solid rgba(14,17,22,.08);backdrop-filter:blur(14px);border-radius:20px;padding:34px 26px;text-align:left;transition:.35s}
-.card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(14,17,22,.18)}
-.card svg{width:38px;height:38px;stroke:var(--dark);margin-bottom:18px}
-.card h3{font-size:16px;margin-bottom:10px}
-.card p{color:rgba(14,17,22,.65);font-size:14px;line-height:1.6}
+/* FEATURES — коллаж как в референсе */
+.features{background:#e9e8e6;color:var(--dark);padding:110px 5%}
+.features h2{font-size:clamp(28px,4vw,44px);letter-spacing:-1px;text-align:center;color:var(--dark);margin-bottom:80px}
+.collage{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1200px;margin:0 auto}
+.card-a{grid-column:1/9;display:grid;grid-template-columns:1.25fr 1fr}
+.card-a img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block}
+.card-a .panel{background:#141414;color:#f0efec;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:17px;line-height:1.6}
+.card{background:#141414}
+.card img{width:100%;object-fit:cover;display:block}
+.card .cap{padding:22px 22px 26px;color:#f0efec}
+.card .cap h3{font-size:18px;letter-spacing:0;margin-bottom:8px}
+.card .cap p{font-size:14px;line-height:1.6;color:#b9b7b3}
+.card-b{grid-column:9/13;margin-top:90px}
+.card-b img{height:460px}
+.card-c{grid-column:1/5;margin-top:60px}
+.card-c img{height:420px}
+.card-d{grid-column:5/9;margin-top:140px}
+.card-d img{height:380px}
+.card-e{grid-column:9/13;margin-top:60px;background:#141414;color:#f0efec;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:50px 30px}
+.card-e h3{font-size:20px;margin-bottom:12px}
+.card-e p{font-size:14px;line-height:1.6;color:#b9b7b3}
+@media(max-width:900px){
+  .card-a,.card-b,.card-c,.card-d,.card-e{grid-column:1/13;margin-top:0}
+  .card-a{grid-template-columns:1fr}
+  .card-a img{min-height:260px}
+}
 
 /* MODAL */
 .modal{position:fixed;inset:0;background:rgba(4,7,10,.75);backdrop-filter:blur(6px);display:none;justify-content:center;align-items:center;z-index:100}
@@ -51,11 +65,12 @@ nav a:hover{color:var(--acc)}
 .modal-box{width:min(420px,92%);background:#161b24;border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:34px 28px;position:relative;animation:pop .3s ease}
 @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
 .modal-box h3{font-size:20px;margin-bottom:8px}
-.modal-box p{color:var(--muted);font-size:14px;margin-bottom:24px}
+.modal-box p{color:#9aa4b2;font-size:14px;margin-bottom:24px}
 .modal-box form{display:flex;flex-direction:column;gap:12px}
 .modal-box input{padding:14px;border-radius:12px;border:1px solid #2a3140;background:#0e1116;color:var(--text);font-size:15px;font-family:'IBM Plex Serif',serif}
 .modal-box input:focus{outline:1px solid var(--acc)}
-.close{position:absolute;top:14px;right:18px;background:none;border:0;color:var(--muted);font-size:24px;cursor:pointer}
+.modal-box .btn{font-size:16px;letter-spacing:1px;padding:14px}
+.close{position:absolute;top:14px;right:18px;background:none;border:0;color:#9aa4b2;font-size:24px;cursor:pointer}
 
 .reveal{opacity:0;transform:translateY(26px);transition:.7s ease}
 .reveal.visible{opacity:1;transform:none}
@@ -64,14 +79,11 @@ nav a:hover{color:var(--acc)}
 <body>
 
 <header>
-  <div class="logo">
-    <svg viewBox="0 0 24 24" fill="none"><path d="M3 20L10 5l4 8 3-4 4 11H3z" fill="#c8f04a"/></svg>
+  <a href="#features" class="nav-left">Преимущества</a>
+  <a href="#hero" class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 20L10 5l4 8 3-4 4 11H3z" fill="#1a1b1e"/></svg>
     WILD&nbsp;ROUTE
-  </div>
-  <nav>
-    <a href="#hero">Главная</a>
-    <a href="#features">Преимущества</a>
-  </nav>
+  </a>
   <button class="btn small" onclick="openModal()">Оставить заявку</button>
 </header>
 
@@ -85,31 +97,45 @@ nav a:hover{color:var(--acc)}
   <button class="btn" onclick="openModal()">Оставить заявку</button>
 </section>
 
-<!-- ЭКРАН 2: ПРЕИМУЩЕСТВА -->
+<!-- ЭКРАН 2: КОЛЛАЖ -->
 <section class="features" id="features">
   <h2 class="reveal">Почему с нами</h2>
-  <p class="sub reveal">Мы продумали всё, чтобы ты просто наслаждался горами</p>
-  <div class="grid">
-    <div class="card reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      <h3>Группы до 8 человек</h3>
-      <p>Никаких толп. Гид знает каждого по имени, маршрут подстраивается под группу.</p>
+  <div class="collage">
+
+    <div class="card-a reveal">
+      <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80" alt="Горы">
+      <div class="panel">Мы продумали логистику, снаряжение и маршруты так, чтобы ты просто наслаждался горами</div>
     </div>
-    <div class="card reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 2l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-      <h3>Гиды с опытом 10+ лет</h3>
-      <p>Сертифицированные инструкторы, которые ходили эти маршруты десятки раз.</p>
+
+    <div class="card card-b reveal">
+      <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80" alt="Группа в походе">
+      <div class="cap">
+        <h3>Группы до 8 человек</h3>
+        <p>Никаких толп. Гид знает каждого по имени, маршрут подстраивается под группу.</p>
+      </div>
     </div>
-    <div class="card reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M6 8V6a6 6 0 0 1 12 0v2"/><rect x="4" y="8" width="16" height="13" rx="3"/></svg>
-      <h3>Снаряжение под ключ</h3>
-      <p>Палатки, питание, аптечки и прокат снаряжения — берём всё на себя.</p>
+
+    <div class="card card-c reveal">
+      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800&q=80" alt="Лагерь">
+      <div class="cap">
+        <h3>Снаряжение под ключ</h3>
+        <p>Палатки, питание, аптечки и прокат снаряжения — берём всё на себя.</p>
+      </div>
     </div>
-    <div class="card reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+    <div class="card card-d reveal">
+      <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" alt="Снаряжение">
+      <div class="cap">
+        <h3>Гиды с опытом 10+ лет</h3>
+        <p>Сертифицированные инструкторы, которые ходили эти маршруты десятки раз.</p>
+      </div>
+    </div>
+
+    <div class="card-e reveal">
       <h3>Безопасность 100%</h3>
       <p>Страховка, спутниковая связь и продуманные запасные выходы с маршрута.</p>
     </div>
+
   </div>
 </section>
 
