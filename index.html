@@ -1,7 +1,170 @@
-.card{background:#141414;border-radius:24px;overflow:hidden;align-self:start}
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WILD ROUTE — авторские походы в горы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=IBM+Plex+Serif:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1116;--acc:#c8f04a;--green:#9bc400;--text:#eef2f6;--dark:#26282b}
+*{margin:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Serif',serif}
+h1,h2,h3,.logo{font-family:'Tenor Sans',sans-serif;font-weight:400}
 
+/* HEADER */
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(92%,820px);display:flex;justify-content:space-between;align-items:center;padding:13px 26px;border-radius:999px;backdrop-filter:blur(20px) saturate(160%) brightness(130%);-webkit-backdrop-filter:blur(20px) saturate(160%) brightness(130%);background:linear-gradient(135deg,rgb(255 255 255 / 20%),rgb(255 255 255 / 7%));z-index:50}
+.nav-left{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:#ffffff;transition:.3s}
+.nav-left:hover{color:var(--acc)}
+.logo{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;font-size:20px;letter-spacing:-1px;text-decoration:none;color:#ffffff}
+.logo svg{width:24px;height:24px}
+
+/* КНОПКИ */
+.btn{display:inline-block;background:var(--acc);color:var(--dark);font-family:'IBM Plex Serif',serif;font-weight:400;font-size:14px;letter-spacing:2px;padding:12px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:.3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(200,240,74,.35)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:140px 24px 80px;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(14,17,22,.18),rgba(14,17,22,.4),rgba(14,17,22,.85));z-index:-1}
+.hero h1{font-size:clamp(96px,7.5vw,96px);line-height:1.05;letter-spacing:-2px;margin-bottom:12px;text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.hero h1 span{color:var(--acc)}
+.hero p{max-width:640px;color:#ffffff;font-size:clamp(16px,1.9vw,16px);line-height:1.5;margin-bottom:24px;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+@media(max-width:640px){.hero h1{font-size:44px;letter-spacing:-1px}}
+
+/* ============ ВТОРОЙ ЭКРАН (коллаж) ============
+   ШПАРГАЛКА (сетка = 12 колонок):
+   grid-column: 1/13 — во всю ширину; 1/5 — лево; 5/9 — центр; 9/13 — право
+   margin-top: больше = ниже; отрицательное = наезжает вверх
+   height у img — высота картинки блока                     */
+.features{background:#e9e8e6;color:var(--dark);padding:110px 5%}
+.features h2{font-size:clamp(32px,3.5vw,32px);letter-spacing:0;text-align:center;color:var(--dark);margin-bottom:80px}
+.collage{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;max-width:1200px;margin:0 auto}
+
+/* большой блок */
+.card-a{grid-column:1/13;grid-row:1;display:grid;grid-template-columns:1.25fr 1fr;border-radius:24px;overflow:hidden}
+.card-a img{width:100%;height:100%;min-height:420px;object-fit:cover;display:block}
+.card-a .panel{background:#141414;color:#f0efec;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;font-size:16px;line-height:1.6}
+
+/* карточки — скругления + не растягиваются до высоты строки */
+.card{background:#141414;border-radius:24px;overflow:hidden;align-self:start}
+.card img{width:100%;object-fit:cover;display:block}
+.card .cap{padding:24px 22px 28px}
+.card .cap p{color:#f0efec;font-size:16px;line-height:1.55}
+
+/* правая — меньше и выше (наезжает на большой блок) */
 .card-b{grid-column:9/13;grid-row:2;margin-top:-120px;position:relative;z-index:2;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .card-b img{height:300px}
-
+/* левая */
+.card-c{grid-column:1/5;grid-row:2;margin-top:70px}
+.card-c img{height:380px}
+/* центральная — меньше и строго по центру */
 .card-d{grid-column:5/9;grid-row:2;margin-top:90px;width:86%;justify-self:center}
 .card-d img{height:240px}
+/* кнопка — на уровне левого блока */
+.btn-collage{grid-column:9/13;grid-row:3;justify-self:end;margin-top:-30px}
+
+@media(max-width:900px){
+  .card-a,.card-b,.card-c,.card-d{grid-column:1/13;grid-row:auto;margin-top:0;width:100%}
+  .btn-collage{grid-column:1/13;grid-row:auto;justify-self:center;margin-top:40px}
+  .card-a{grid-template-columns:1fr}
+  .card-a img{min-height:260px}
+}
+
+/* MODAL — liquid glass */
+.modal{position:fixed;inset:0;background:rgba(10,13,18,.35);backdrop-filter:blur(5px);display:none;justify-content:center;align-items:center;z-index:100}
+.modal.open{display:flex}
+.modal-box{width:min(420px,92%);background:linear-gradient(135deg,rgba(32,38,48,.72),rgba(18,22,30,.55));backdrop-filter:blur(30px) saturate(160%);-webkit-backdrop-filter:blur(30px) saturate(160%);border:1px solid rgba(255,255,255,.2);border-radius:24px;padding:34px 28px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box h3{font-size:20px;margin-bottom:8px}
+.modal-box p{color:#aeb6c0;font-size:16px;margin-bottom:24px}
+.modal-box form{display:flex;flex-direction:column;gap:12px}
+.modal-box input{padding:13px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(10,13,18,.4);color:var(--text);font-size:16px;font-family:'IBM Plex Serif',serif}
+.modal-box input:focus{outline:1px solid var(--acc)}
+.close{position:absolute;top:14px;right:18px;background:none;border:0;color:#aeb6c0;font-size:24px;cursor:pointer}
+
+.reveal{opacity:0;transform:translateY(26px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#features" class="nav-left">Преимущества</a>
+  <a href="#hero" class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M3 20L10 5l4 8 3-4 4 11H3z" fill="#9bc400"/></svg>
+    WILD&nbsp;ROUTE
+  </a>
+  <button class="btn" onclick="openModal()">Оставить заявку</button>
+</header>
+
+<!-- ЭКРАН 1 -->
+<section class="hero" id="hero">
+  <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1920&q=80">
+    <source src="video.mp4" type="video/mp4">
+  </video>
+  <h1>Походы, которые<br><span>меняют тебя</span></h1>
+  <p>Авторские маршруты по самым красивым горам. Маленькие группы, продуманная логистика и гиды, которые знают каждую тропу.</p>
+  <button class="btn" onclick="openModal()">Оставить заявку</button>
+</section>
+
+<!-- ЭКРАН 2: КОЛЛАЖ -->
+<section class="features" id="features">
+  <h2 class="reveal">Почему с нами</h2>
+  <div class="collage">
+
+    <div class="card-a reveal">
+      <img src="img2.jpg" alt="Море">
+      <div class="panel">Мы продумали логистику, снаряжение и маршруты так, чтобы ты просто наслаждался горами</div>
+    </div>
+
+    <div class="card card-b reveal">
+      <img src="img1.jpg" alt="На вершине">
+      <div class="cap"><p>Гиды с опытом 10+ лет, которые знают каждую тропу маршрута</p></div>
+    </div>
+
+    <div class="card card-c reveal">
+      <img src="img3.jpg" alt="Снаряжение">
+      <div class="cap"><p>Снаряжение под ключ — палатки, питание и прокат берём на себя</p></div>
+    </div>
+
+    <div class="card card-d reveal">
+      <img src="img4.jpg" alt="Маршрут">
+      <div class="cap"><p>Маршруты под твой уровень — от новичка до опытного</p></div>
+    </div>
+
+    <button class="btn btn-collage reveal" onclick="openModal()">Оставить заявку</button>
+
+  </div>
+</section>
+
+<!-- ПОПАП -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <h3>Оставить заявку</h3>
+    <p>Перезвоним в течение часа и подберём маршрут</p>
+    <form action="https://formsubmit.co/superhumansmm@yandex.ru" method="POST">
+      <input type="text" name="Имя" placeholder="Имя" required>
+      <input type="tel" name="Телефон" placeholder="+7 ___ ___-__-__" required>
+      <input type="hidden" name="_subject" value="Новая заявка с сайта">
+      <input type="hidden" name="Сайт" value="https://sergio3010qw-design.github.io/white-rock-test-landing">
+      <input type="hidden" name="Автор" value="Багаев С.С.">
+      <input type="hidden" name="_next" value="https://t.me/white_rock123_bot?start=lead">
+      <input type="hidden" name="_captcha" value="false">
+      <button class="btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('modal').classList.add('open')}
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
