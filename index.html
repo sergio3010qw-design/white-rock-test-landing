@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Походы выходного дня</title>
+<style>
+*{margin:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:#0e1116;color:#eef2f6}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:24px;text-align:center}
+h1{font-size:clamp(32px,6vw,56px);line-height:1.1}
+.accent{color:#c8f04a}
+.sub{max-width:560px;color:#9aa4b2;margin:16px 0 32px;font-size:17px}
+.btn{display:inline-block;background:#c8f04a;color:#0e1116;font-weight:700;padding:14px 28px;border-radius:12px;text-decoration:none;border:0;cursor:pointer;font-size:16px}
+.btn:hover{opacity:.9}
+form{display:flex;flex-direction:column;gap:12px;width:min(360px,100%)}
+input{padding:14px;border-radius:12px;border:1px solid #2a3140;background:#161b24;color:#eef2f6;font-size:16px}
+input::placeholder{color:#555}
+.hint{color:#9aa4b2;font-size:14px;margin-top:16px}
+</style>
+</head>
+<body>
+
+<!-- ЭКРАН 1 -->
+<section>
+  <h1>Походы в горы<br><span class="accent">на выходные</span></h1>
+  <p class="sub">Маршруты для новичков и опытных. Подберём тур под твой уровень и свободные даты.</p>
+  <a class="btn" href="#lead">Оставить заявку</a>
+</section>
+
+<!-- ЭКРАН 2 -->
+<section id="lead">
+  <h1 style="font-size:clamp(24px,4vw,36px)">Оставить заявку</h1>
+  <p class="sub">Перезвоним в течение часа</p>
+
+  <form action="https://formsubmit.co/superhumansmm@yandex.ru" method="POST">
+
+    <!-- Имя и телефон -->
+    <input type="text" name="Имя" placeholder="Имя" required>
+    <input type="tel" name="Телефон" placeholder="+7 ___ ___-__-__" required>
+
+    <!-- Скрытые поля для формата письма -->
+    <input type="hidden" name="_subject" value="Новая заявка с сайта">
+    <input type="hidden" name="Сайт" value="https://sergio3010qw-design.github.io/test-landing">
+    <input type="hidden" name="Автор" value="Багаев С.С.">
+
+    <!-- После отправки — редирект в бота -->
+    <input type="hidden" name="_next" value="https://t.me/white-rock?start=lead">
+
+    <!-- Отключаем капчу Formsubmit -->
+    <input type="hidden" name="_captcha" value="false">
+
+    <button class="btn">Отправить</button>
+  </form>
+
+  <p class="hint">После отправки откроется Telegram-бот</p>
+</section>
+
+</body>
+</html>
